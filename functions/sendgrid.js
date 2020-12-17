@@ -1,18 +1,21 @@
+const directusclient = require('@directus/sdk-js');
 const client = require("@sendgrid/mail")
+const clientfull = require("@sendgrid/client")
 
-function sendEmail(client, message, senderEmail, senderName) {
+function sendEmail(clientfull, subject, message, senderEmail, senderName) {
   return new Promise((fulfill, reject) => {
     const data = {
       from: {
         email: senderEmail,
         name: senderName
       },
-      subject: 'Netlify Function - Sendgrid Email',
-      to: 'schmid91@gmail.com',
-      html: `Hey, you\'ve sent an email from Netlify Functions<br/>Message: ${message}`
+      subject: 'Directus - Netlify Function - Sendgrid Email' + subject,
+      to: 'stephan@thegovlab.org',
+      // to: '',
+      html: `Hey, you\'ve triggered a webhook from Directus and sent an email from Netlify Functions<br/>Message:<br/> ${message}`
     }
 
-    client
+    clientfull
       .send(data)
       .then(([response, body]) => {
         fulfill(response)
@@ -22,23 +25,72 @@ function sendEmail(client, message, senderEmail, senderName) {
 }
 
 exports.handler = function(event, context, callback) {
+
+  console.log(event);
+  console.log(context);
+  console.log(callback);
+  console.log(event.body);
+
+
   const {
     SENDGRID_API_KEY,
     SENDGRID_SENDER_EMAIL,
-    SENDGRID_SENDER_NAME
+    SENDGRID_SENDER_NAME,
+    DIRECTUS_SG_API_KEY,
+    DIRECTUS_COLLECTION_API_KEY,
+    DIRECTUS_LOGIN,
+    DIRECTUS_PWD
   } = process.env
 
   const body = JSON.parse(event.body)
-  const message = body.message
+  const activesend = body.payload.activatesend;
 
-  client.setApiKey(SENDGRID_API_KEY)
 
-  sendEmail(
-    client,
-    message,
-    SENDGRID_SENDER_EMAIL,
-    SENDGRID_SENDER_NAME
-  )
-  .then(response => callback(null, { statusCode: response.statusCode }))
-  .catch(err => callback(err, null))
+    const directus = new directusclient('http://dev.thegovlab.com:8055/');
+         directus.auth.login({ email: DIRECTUS_LOGIN, password: DIRECTUS_PWD }).then( authresp => {
+                 console.log(authresp);
+                directus.items('test').read(body.item).then(response => {
+                  console.log(response);
+                  console.log(response.data);
+                  console.log(response.data.title);
+                  console.log(response.data.content);
+
+                  if(event.queryStringParameters.sgapikey == DIRECTUS_SG_API_KEY && response.data.apikey == DIRECTUS_COLLECTION_API_KEY && activesend == true )
+                  {
+                    const subject = response.data.title;
+                    const message = response.data.content;
+                    console.log(subject);
+                    console.log(message);
+                    console.log(DIRECTUS_SG_API_KEY);
+                    client.setApiKey(SENDGRID_API_KEY);
+                    clientfull.setApiKey(SENDGRID_API_KEY);
+
+                    const request = {
+          method: 'GET',
+          url: '/v3/marketing/lists'
+        };
+        clientfull.request(request)
+        .then(([response, body]) => {
+          console.log(response.statusCode);
+          console.log(body);
+        })
+                    // sendEmail(
+                    //   client,
+                    //   subject,
+                    //   message,
+                    //   SENDGRID_SENDER_EMAIL,
+                    //   SENDGRID_SENDER_NAME
+                    // )
+                    // .then(response => callback(null, { statusCode: response.statusCode }))
+                    // .catch(err => callback(err, null))
+                  }
+
+
+                });
+            });
+
+
+  // }
+
+
 }
