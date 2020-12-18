@@ -15,12 +15,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@directus/sdk-js": "^9.0.0-rc.24",
     "@nuxtjs/markdownit": "^1.2.6",
     "@sendgrid/client": "^7.4.0",
-    "nuxt": "^2.14.6"
+    "nuxt": "^2.14.6",
+    "axios": "^0.21.0"
   },
   "devDependencies": {
+    "@directus/sdk-js": "^9.0.0-rc.23",
     "@nuxtjs/color-mode": "^1.1.1",
     "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/svg": "^0.1.12",
@@ -35,8 +36,6 @@
     "postcss-preset-env": "^6.7.0",
     "prettier": "^1.16.4",
     "tailwindcss": "^1.8.10",
-    "tailwindcss-dark-mode": "^1.1.6",
-    "@directus/sdk-js": "^9.0.0-rc.24",
-    "@sendgrid/client": "^7.4.0"
+    "tailwindcss-dark-mode": "^1.1.6"
   }
 }
