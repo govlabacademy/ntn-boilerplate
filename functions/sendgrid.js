@@ -1,4 +1,4 @@
-const directusclient = require('@directus/sdk-js');
+const directusclient = require('@directus/sdk-js')
 const client = require("@sendgrid/client")
 
 // function sendEmail(clientfull, subject, message, senderEmail, senderName) {

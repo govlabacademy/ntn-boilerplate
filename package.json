@@ -18,7 +18,6 @@
     "@directus/sdk-js": "^9.0.0-rc.24",
     "@nuxtjs/markdownit": "^1.2.6",
     "@sendgrid/client": "^7.4.0",
-    "@sendgrid/mail": "^7.4.0",
     "nuxt": "^2.14.6"
   },
   "devDependencies": {
@@ -38,7 +37,6 @@
     "tailwindcss": "^1.8.10",
     "tailwindcss-dark-mode": "^1.1.6",
     "@directus/sdk-js": "^9.0.0-rc.24",
-    "@sendgrid/client": "^7.4.0",
-    "@sendgrid/mail": "^7.4.0"
+    "@sendgrid/client": "^7.4.0"
   }
 }
