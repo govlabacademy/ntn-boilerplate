@@ -1,3 +1,5 @@
+
+
 const directusclient = require('@directus/sdk-js')
 const client = require("@sendgrid/client")
 const http = require("https");
@@ -62,15 +64,13 @@ exports.handler = function(event, context, callback) {
           //     })
 
               const data = {
-                "from": {
-                    "email": "test@thegovlab.org",
-                    "name": "Test Sender"
-                  },
+                "sender_id": 1274375,
                 "custom_unsubscribe_url": "",
                 "html_content": "<html><head><title></title></head><body><p>Check out the new crowdlaw nl!</p></body></html>",
                 "list_ids": [
                   '0637dc04-a9a6-4169-914a-5dc7a3b020bd'
                 ],
+
                 "plain_content": "Check out the new crowdlaw nl!",
                 "subject": "New Products for Spring!",
                 "title": "Crowdlaw Newsletter"
