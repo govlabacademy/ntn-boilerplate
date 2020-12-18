@@ -51,46 +51,43 @@ exports.handler = function(event, context, callback) {
 
                       client.setApiKey(SENDGRID_API_KEY);
 
-                      const request = {
-            method: 'GET',
-            url: '/v3/marketing/lists'
-          };
-          client.request(request)
-              .then(([response, body]) => {
-                console.log(response.statusCode);
-                console.log(body);
-              })
+          //             const request = {
+          //   method: 'GET',
+          //   url: '/v3/marketing/lists'
+          // };
+          // client.request(request)
+          //     .then(([response, body]) => {
+          //       console.log(response.statusCode);
+          //       console.log(body);
+          //     })
 
-
-
-
-              var http = require("https");
-
-              var options = {
-                "method": "POST",
-                "hostname": "api.sendgrid.com",
-                "port": null,
-                "path": "/v3/marketing/singlesends",
-                "headers": {
-                  "authorization": "Bearer "+SENDGRID_API_KEY
-                }
+              const data = {
+                "from": {
+                    "email": "test@thegovlab.org",
+                    "name": "Test Sender"
+                  },
+                "custom_unsubscribe_url": "",
+                "html_content": "<html><head><title></title></head><body><p>Check out the new crowdlaw nl!</p></body></html>",
+                "list_ids": [
+                  '0637dc04-a9a6-4169-914a-5dc7a3b020bd'
+                ],
+                "plain_content": "Check out the new crowdlaw nl!",
+                "subject": "New Products for Spring!",
+                "title": "Crowdlaw Newsletter"
               };
+                request.body = data;
+                request.method = 'POST';
+                request.url = '/v3/campaigns';
+                client.request(request)
+                .then(([response, body]) => {
+                  console.log(response.statusCode);
+                  console.log(response.body);
+                })
 
-              var req = http.request(options, function (res) {
-                var chunks = [];
 
-                res.on("data", function (chunk) {
-                  chunks.push(chunk);
-                });
 
-                res.on("end", function () {
-                  var body = Buffer.concat(chunks);
-                  console.log(body.toString());
-                });
-              });
 
               req.write("{\"name\":\"The Govlab\",\"categories\":[\"string\"],\"send_at\":\"string (optional)\",\"send_to\":{\"list_ids\":[\"0637dc04-a9a6-4169-914a-5dc7a3b020bd\"],\"segment_ids\":[\"string\"],\"all\":\"boolean (optional)\"},\"email_config\":{\"subject\":\"string (optional)\",\"html_content\":\"string (optional)\",\"plain_content\":\"string (optional)\",\"generate_plain_content\":true,\"design_id\":\"483b855f-7fa9-4967-a7e1-ca05b0676fc7\",\"editor\":\"code\",\"suppression_group_id\":\"integer (optional)\",\"custom_unsubscribe_url\":\"string (optional)\",\"sender_id\":\"integer (optional)\",\"ip_pool\":\"string (optional)\"}}");
-              req.end();
 
 
 
