@@ -17,6 +17,7 @@
   "dependencies": {
     "@directus/sdk-js": "^9.0.0-rc.24",
     "@nuxtjs/markdownit": "^1.2.6",
+    "@sendgrid/client": "^7.4.0",
     "@sendgrid/mail": "^7.4.0",
     "nuxt": "^2.14.6"
   },
