@@ -1,5 +1,6 @@
 const directusclient = require('@directus/sdk-js')
 const client = require("@sendgrid/client")
+const http = require("https");
 
 // function sendEmail(clientfull, subject, message, senderEmail, senderName) {
 //   return new Promise((fulfill, reject) => {
@@ -60,20 +61,36 @@ exports.handler = function(event, context, callback) {
                 console.log(body);
               })
 
-              var datasend = "{\"name\":\"string (required)\",\"categories\":[\"string\"],\"send_at\":\"string (optional)\",\"send_to\":{\"list_ids\":[\"0637dc04-a9a6-4169-914a-5dc7a3b020bd\"],\"segment_ids\":[\"string\"],\"all\":\"boolean (optional)\"},\"email_config\":{\"subject\":\"Test it out\",\"html_content\":\"string (optional)\",\"plain_content\":\"string (optional)\",\"generate_plain_content\":true,\"design_id\":\"483b855f-7fa9-4967-a7e1-ca05b0676fc7\",\"editor\":\"code\",\"suppression_group_id\":\"integer (optional)\",\"custom_unsubscribe_url\":\"string (optional)\",\"sender_id\":\"integer (optional)\",\"ip_pool\":\"string (optional)\"}}";
 
-              var xhr = new XMLHttpRequest();
-              xhr.withCredentials = true;
 
-              xhr.addEventListener("readystatechange", function () {
-                if (this.readyState === this.DONE) {
-                  console.log(this.responseText);
+
+              var http = require("https");
+
+              var options = {
+                "method": "POST",
+                "hostname": "api.sendgrid.com",
+                "port": null,
+                "path": "/v3/marketing/singlesends",
+                "headers": {
+                  "authorization": "Bearer "+SENDGRID_API_KEY
                 }
+              };
+
+              var req = http.request(options, function (res) {
+                var chunks = [];
+
+                res.on("data", function (chunk) {
+                  chunks.push(chunk);
+                });
+
+                res.on("end", function () {
+                  var body = Buffer.concat(chunks);
+                  console.log(body.toString());
+                });
               });
 
-              xhr.open("POST", "https://api.sendgrid.com/v3/marketing/singlesends");
-              xhr.setRequestHeader("authorization", "Bearer "+SENDGRID_API_KEY);
-              xhr.send(datasend);
+              req.write("{\"name\":\"The Govlab\",\"categories\":[\"string\"],\"send_at\":\"string (optional)\",\"send_to\":{\"list_ids\":[\"0637dc04-a9a6-4169-914a-5dc7a3b020bd\"],\"segment_ids\":[\"string\"],\"all\":\"boolean (optional)\"},\"email_config\":{\"subject\":\"string (optional)\",\"html_content\":\"string (optional)\",\"plain_content\":\"string (optional)\",\"generate_plain_content\":true,\"design_id\":\"483b855f-7fa9-4967-a7e1-ca05b0676fc7\",\"editor\":\"code\",\"suppression_group_id\":\"integer (optional)\",\"custom_unsubscribe_url\":\"string (optional)\",\"sender_id\":\"integer (optional)\",\"ip_pool\":\"string (optional)\"}}");
+              req.end();
 
 
 
