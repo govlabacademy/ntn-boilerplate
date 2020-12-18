@@ -85,9 +85,9 @@ exports.handler = function(event, context, callback) {
                 })
 
 
-
-
-              req.write("{\"name\":\"The Govlab\",\"categories\":[\"string\"],\"send_at\":\"string (optional)\",\"send_to\":{\"list_ids\":[\"0637dc04-a9a6-4169-914a-5dc7a3b020bd\"],\"segment_ids\":[\"string\"],\"all\":\"boolean (optional)\"},\"email_config\":{\"subject\":\"string (optional)\",\"html_content\":\"string (optional)\",\"plain_content\":\"string (optional)\",\"generate_plain_content\":true,\"design_id\":\"483b855f-7fa9-4967-a7e1-ca05b0676fc7\",\"editor\":\"code\",\"suppression_group_id\":\"integer (optional)\",\"custom_unsubscribe_url\":\"string (optional)\",\"sender_id\":\"integer (optional)\",\"ip_pool\":\"string (optional)\"}}");
+              //
+              //
+              // req.write("{\"name\":\"The Govlab\",\"categories\":[\"string\"],\"send_at\":\"string (optional)\",\"send_to\":{\"list_ids\":[\"0637dc04-a9a6-4169-914a-5dc7a3b020bd\"],\"segment_ids\":[\"string\"],\"all\":\"boolean (optional)\"},\"email_config\":{\"subject\":\"string (optional)\",\"html_content\":\"string (optional)\",\"plain_content\":\"string (optional)\",\"generate_plain_content\":true,\"design_id\":\"483b855f-7fa9-4967-a7e1-ca05b0676fc7\",\"editor\":\"code\",\"suppression_group_id\":\"integer (optional)\",\"custom_unsubscribe_url\":\"string (optional)\",\"sender_id\":\"integer (optional)\",\"ip_pool\":\"string (optional)\"}}");
 
 
 
