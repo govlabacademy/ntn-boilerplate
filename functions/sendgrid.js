@@ -1,27 +1,27 @@
-const directusclient = require('@directus/sdk-js');
-const client = require("@sendgrid/client")
+// const directusclient = require('@directus/sdk-js');
+// const client = require("@sendgrid/client")
 
-function sendEmail(clientfull, subject, message, senderEmail, senderName) {
-  return new Promise((fulfill, reject) => {
-    const data = {
-      from: {
-        email: senderEmail,
-        name: senderName
-      },
-      subject: 'Directus - Netlify Function - Sendgrid Email' + subject,
-      to: 'stephan@thegovlab.org',
-      // to: '',
-      html: `Hey, you\'ve triggered a webhook from Directus and sent an email from Netlify Functions<br/>Message:<br/> ${message}`
-    }
-
-    client
-      .send(data)
-      .then(([response, body]) => {
-        fulfill(response)
-      })
-      .catch(error => reject(error))
-  })
-}
+// function sendEmail(clientfull, subject, message, senderEmail, senderName) {
+//   return new Promise((fulfill, reject) => {
+//     const data = {
+//       from: {
+//         email: senderEmail,
+//         name: senderName
+//       },
+//       subject: 'Directus - Netlify Function - Sendgrid Email' + subject,
+//       to: 'stephan@thegovlab.org',
+//       // to: '',
+//       html: `Hey, you\'ve triggered a webhook from Directus and sent an email from Netlify Functions<br/>Message:<br/> ${message}`
+//     }
+//
+//     client
+//       .send(data)
+//       .then(([response, body]) => {
+//         fulfill(response)
+//       })
+//       .catch(error => reject(error))
+//   })
+// }
 
 exports.handler = function(event, context, callback) {
 
@@ -41,9 +41,9 @@ exports.handler = function(event, context, callback) {
     DIRECTUS_PWD
   } = process.env
 
-  const body = JSON.parse(event.body)
+  const body = JSON.parse(event.body);
   const activesend = body.payload.activatesend;
-
+  console.log(activesend);
 
     // const directus = new directusclient('http://dev.thegovlab.com:8055/');
     //      directus.auth.login({ email: DIRECTUS_LOGIN, password: DIRECTUS_PWD }).then( authresp => {
