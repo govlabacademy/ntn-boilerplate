@@ -59,19 +59,23 @@ exports.handler = function(event, context, callback) {
                 console.log(response.statusCode);
                 console.log(body);
               })
-              
-  var requestsend = require("request");
 
-var options = { method: 'POST',
-  url: 'https://api.sendgrid.com/v3/marketing/singlesends',
-  headers: { authorization: 'Bearer '+SENDGRID_API_KEY },
-  body: '{"name":"string (required)","categories":["string"],"send_at":"string (optional)","send_to":{"list_ids":["0637dc04-a9a6-4169-914a-5dc7a3b020bd"],"segment_ids":["string"],"all":"boolean (optional)"},"email_config":{"subject":"Test me","html_content":"string (optional)","plain_content":"string (optional)","generate_plain_content":true,"design_id":"483b855f-7fa9-4967-a7e1-ca05b0676fc7","editor":"code","suppression_group_id":"integer (optional)","custom_unsubscribe_url":"string (optional)","sender_id":"integer (optional)","ip_pool":"string (optional)"}}' };
+              var datasend = "{\"name\":\"string (required)\",\"categories\":[\"string\"],\"send_at\":\"string (optional)\",\"send_to\":{\"list_ids\":[\"0637dc04-a9a6-4169-914a-5dc7a3b020bd\"],\"segment_ids\":[\"string\"],\"all\":\"boolean (optional)\"},\"email_config\":{\"subject\":\"Test it out\",\"html_content\":\"string (optional)\",\"plain_content\":\"string (optional)\",\"generate_plain_content\":true,\"design_id\":\"483b855f-7fa9-4967-a7e1-ca05b0676fc7\",\"editor\":\"code\",\"suppression_group_id\":\"integer (optional)\",\"custom_unsubscribe_url\":\"string (optional)\",\"sender_id\":\"integer (optional)\",\"ip_pool\":\"string (optional)\"}}";
 
-requestsend(options, function (error, response, body) {
-  if (error) throw new Error(error);
+              var xhr = new XMLHttpRequest();
+              xhr.withCredentials = true;
 
-  console.log(body);
-});
+              xhr.addEventListener("readystatechange", function () {
+                if (this.readyState === this.DONE) {
+                  console.log(this.responseText);
+                }
+              });
+
+              xhr.open("POST", "https://api.sendgrid.com/v3/marketing/singlesends");
+              xhr.setRequestHeader("authorization", "Bearer "+SENDGRID_API_KEY);
+              xhr.send(datasend);
+
+
 
     //      directus.auth.login({ email: DIRECTUS_LOGIN, password: DIRECTUS_PWD }).then( authresp => {
     //              console.log(authresp);
