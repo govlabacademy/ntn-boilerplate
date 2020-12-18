@@ -1,6 +1,5 @@
 const directusclient = require('@directus/sdk-js');
-const client = require("@sendgrid/mail")
-const clientfull = require("@sendgrid/client")
+const client = require("@sendgrid/client")
 
 function sendEmail(clientfull, subject, message, senderEmail, senderName) {
   return new Promise((fulfill, reject) => {
@@ -62,14 +61,14 @@ exports.handler = function(event, context, callback) {
                     console.log(subject);
                     console.log(message);
                     console.log(DIRECTUS_SG_API_KEY);
+
                     client.setApiKey(SENDGRID_API_KEY);
-                    clientfull.setApiKey(SENDGRID_API_KEY);
 
                     const request = {
           method: 'GET',
           url: '/v3/marketing/lists'
         };
-        clientfull.request(request)
+        client.request(request)
         .then(([response, body]) => {
           console.log(response.statusCode);
           console.log(body);
