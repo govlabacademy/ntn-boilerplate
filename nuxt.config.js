@@ -44,7 +44,17 @@ export default {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400&display=swap'
       }
-    ] // ? Imports the font 'Karla' and is optimized by the netlify plugin 'Subfont'
+    ], // ? Imports the font 'Karla' and is optimized by the netlify plugin 'Subfont'
+    script: [
+      {
+        src: "https://code.jquery.com/jquery-2.2.4.min.js",
+        type: "text/javascript"
+      },
+      {
+        src: "https://unpkg.com/@directus/sdk-js@5.3.4/dist/directus-sdk.umd.min.js",
+        type: "text/javascript"
+      }
+    ]
   },
   generate: {
     routes: dynamicRoutes,

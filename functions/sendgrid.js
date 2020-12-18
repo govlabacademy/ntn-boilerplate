@@ -1,4 +1,4 @@
-const directusclient = require('@directus/sdk-js');
+const directusclient = require('@directus/sdk-js')
 const client = require("@sendgrid/client")
 
 // function sendEmail(clientfull, subject, message, senderEmail, senderName) {
@@ -45,7 +45,10 @@ exports.handler = function(event, context, callback) {
   const activesend = body.payload.activatesend;
   console.log(activesend);
 
-    // const directus = new directusclient('http://dev.thegovlab.com:8055/');
+    const directus = new directusclient('http://dev.thegovlab.com:8055/');
+      directus.items('test').read(body.item).then(response => {
+        console.log(response);
+      })
     //      directus.auth.login({ email: DIRECTUS_LOGIN, password: DIRECTUS_PWD }).then( authresp => {
     //              console.log(authresp);
     //             directus.items('test').read(body.item).then(response => {
