@@ -51,7 +51,7 @@ exports.handler = function(event, context, callback) {
 client.setApiKey(SENDGRID_API_KEY);
 const request = {
   method: 'GET',
-  url: '/marketing/lists'
+  url: '/v3/marketing/lists'
 };
 client.request(request)
 .then(([response, body]) => {
