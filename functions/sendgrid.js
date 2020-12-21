@@ -54,35 +54,35 @@ exports.handler = function(event, context, callback) {
                       client.setApiKey(SENDGRID_API_KEY);
 
                       const request = {
-            // method: 'GET',
-            // url: '/v3/marketing/lists'
+            method: 'GET',
+            url: '/v3/campaigns'
           };
-          // client.request(request)
-          //     .then(([response, body]) => {
-          //       console.log(response.statusCode);
-          //       console.log(body);
-          //     })
+          client.request(request)
+              .then(([response, body]) => {
+                console.log(response.statusCode);
+                console.log(body);
+              })
 
-              const data = {
-                "sender_id": 1274375,
-                "custom_unsubscribe_url": "",
-                "html_content": "<html><head><title></title></head><body><p>Check out the new crowdlaw nl!</p></body></html>",
-                "list_ids": [
-                  '0637dc04-a9a6-4169-914a-5dc7a3b020bd'
-                ],
-
-                "plain_content": "Check out the new crowdlaw nl!",
-                "subject": "New Products for Spring!",
-                "title": "Crowdlaw Newsletter"
-              };
-                request.body = data;
-                request.method = 'POST';
-                request.url = '/v3/campaigns';
-                client.request(request)
-                .then(([response, body]) => {
-                  console.log(response.statusCode);
-                  console.log(response.body);
-                })
+              // const data = {
+              //   "sender_id": 1274375,
+              //   "custom_unsubscribe_url": "",
+              //   "html_content": "<html><head><title></title></head><body><p>Check out the new crowdlaw nl!</p></body></html>",
+              //   "list_ids": [
+              //     '0637dc04-a9a6-4169-914a-5dc7a3b020bd'
+              //   ],
+              //
+              //   "plain_content": "Check out the new crowdlaw nl!",
+              //   "subject": "New Products for Spring!",
+              //   "title": "Crowdlaw Newsletter"
+              // };
+              //   request.body = data;
+              //   request.method = 'POST';
+              //   request.url = '/v3/campaigns';
+              //   client.request(request)
+              //   .then(([response, body]) => {
+              //     console.log(response.statusCode);
+              //     console.log(response.body);
+              //   })
 
 
               //
