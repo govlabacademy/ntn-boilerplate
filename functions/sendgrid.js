@@ -55,7 +55,7 @@ exports.handler = function(event, context, callback) {
 
                       const request = {
             method: 'GET',
-            url: '/v3/campaigns'
+            url: '/v3/contactdb/lists'
           };
           client.request(request)
               .then(([response, body]) => {
