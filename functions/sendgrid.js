@@ -51,8 +51,8 @@ exports.handler = function(event, context, callback) {
 client.setApiKey(SENDGRID_API_KEY);
 const request = {
   method: 'POST',
-  url: '/v3/marketing/test/send_email',
-  body: "{\"template_id\":\"d-e40c2f0007664c7aac6a8097d9a25300\",\"emails\":[\"stephan@thegovlab.org\"],\"from_address\":\"admins@thegovlab.org\"}"
+  url: '/v3/marketing/singlesends',
+  body: "{\"name\":\"By Stephan\",\"template_id\":\"d-e40c2f0007664c7aac6a8097d9a25300\",\"send_to\":{\"list_ids\":[\"beb02da9-d59c-4875-8ea7-1797d3a7eb9e\"],\"from_address\":\"admins@thegovlab.org\"}"
 };
 client.request(request)
 .then(([response, body]) => {
