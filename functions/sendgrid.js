@@ -52,7 +52,7 @@ client.setApiKey(SENDGRID_API_KEY);
 const request = {
   method: 'POST',
   url: '/v3/marketing/test/send_email',
-  body: "{\"template_id\":\"'d-e40c2f0007664c7aac6a8097d9a25300'\",\"emails\":[\"'stephan@thegovlab.org'\"],\"from_address\":\"'admins@thegovlab.org'\"}"
+  body: "{\"template_id\":\"d-e40c2f0007664c7aac6a8097d9a25300\",\"emails\":[\"stephan@thegovlab.org\"],\"from_address\":\"admins@thegovlab.org\"}"
 };
 client.request(request)
 .then(([response, body]) => {
