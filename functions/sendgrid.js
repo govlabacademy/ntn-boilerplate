@@ -50,8 +50,9 @@ exports.handler = function(event, context, callback) {
       const client = require('@sendgrid/client');
 client.setApiKey(SENDGRID_API_KEY);
 const request = {
-  method: 'GET',
-  url: '/v3/marketing/lists/0637dc04-a9a6-4169-914a-5dc7a3b020bd'
+  method: 'POST',
+  url: '/v3/marketing/test/send_email',
+  data: "{\"template_id\":\"d-e40c2f0007664c7aac6a8097d9a25300\",\"version_id_override\":\"string (optional)\",\"sender_id\":\"integer (optional)\",\"custom_unsubscribe_url\":\"string (optional)\",\"suppression_group_id\":\"integer (optional)\",\"emails\":[\"stephan@thegovlab.org\"],\"from_address\":\"admins@thegovlab.org\"}"
 };
 client.request(request)
 .then(([response, body]) => {
