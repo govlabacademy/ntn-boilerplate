@@ -60,14 +60,14 @@ client.request(request)
   console.log(body.id);
 
   const request2 = {
-    method: 'PUT',
+    method: 'POST',
     url: '/marketing/singlesends/'+body.id+'/schedule',
     body: "{\"send_at\":\"now\"}"
   };
   client.request(request2)
   .then(([response2, body2]) => {
     console.log(response2.statusCode);
-    console.log(body2.id);
+    console.log(body2);
   });
 
 })
