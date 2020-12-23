@@ -52,23 +52,12 @@ client.setApiKey(SENDGRID_API_KEY);
 const request = {
   method: 'POST',
   url: '/v3/marketing/singlesends',
-  body: "{\"name\":\"By Stephan\",\"status\":\"scheduled\",\"send_at\":\"2020-12-23T05:15:44Z\",\"sender_id\":\"1274375\",\"send_to\":{\"list_ids\":[\"beb02da9-d59c-4875-8ea7-1797d3a7eb9e\"]},\"email_config\":{\"generate_plain_content\":true,\"design_id\":\"483b855f-7fa9-4967-a7e1-ca05b0676fc7\"}}"
+  body: "{\"name\":\"By Stephan\",\"status\":\"scheduled\",\"send_at\":\"now\",\"sender_id\":\"1274375\",\"send_to\":{\"list_ids\":[\"beb02da9-d59c-4875-8ea7-1797d3a7eb9e\"]},\"email_config\":{\"generate_plain_content\":true,\"design_id\":\"483b855f-7fa9-4967-a7e1-ca05b0676fc7\"}}"
 };
 client.request(request)
 .then(([response, body]) => {
   console.log(response.statusCode);
   console.log(body.id);
-
-  const request2 = {
-    method: 'POST',
-    url: '/marketing/singlesends/'+body.id+'/schedule',
-    body: "{\"send_at\":\"now\"}"
-  };
-  client.request(request2)
-  .then(([response2, body2]) => {
-    console.log(response2.statusCode);
-    console.log(body2);
-  });
 
 })
 
