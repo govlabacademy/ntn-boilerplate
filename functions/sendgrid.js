@@ -66,10 +66,13 @@ client.setApiKey(SENDGRID_API_KEY);
 const data = {
   "send_at": 1608754500
 };
-const request = {};
-  request.body = data;
-  request.method = 'POST';
-  request.url = '/v3/campaigns/ad66e0fe-44dd-11eb-b8de-b634cab0c61b/schedules';
+
+const request = {
+  method: 'POST',
+  url: '/v3/marketing/singlesends/ad66e0fe-44dd-11eb-b8de-b634cab0c61b/schedule',
+  body: '{"send_at":"now"}'
+};
+
   client.request(request)
   .then(([response, body]) => {
     console.log(response.statusCode);
