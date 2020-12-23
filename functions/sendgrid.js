@@ -70,7 +70,7 @@ const data = {
 const request = {
   method: 'PUT',
   url: '/v3/marketing/singlesends/ad66e0fe-44dd-11eb-b8de-b634cab0c61b/schedule',
-  body: '{"send_at":"now"}'
+  body: "{\"send_at\":\"now\"}"
 };
 
   client.request(request)
