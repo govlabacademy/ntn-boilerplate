@@ -24,10 +24,10 @@ const directusclient = require('@directus/sdk-js')
 
 exports.handler = function(event, context, callback) {
 
-  console.log(event);
-  console.log(context);
-  console.log(callback);
-  console.log(event.body);
+  // console.log(event);
+  // console.log(context);
+  // console.log(callback);
+  // console.log(event.body);
 
 
   const {
@@ -66,6 +66,7 @@ client.setApiKey(SENDGRID_API_KEY);
 const data = {
   "send_at": 1608754500
 };
+const request = {};
   request.body = data;
   request.method = 'POST';
   request.url = '/v3/campaigns/ad66e0fe-44dd-11eb-b8de-b634cab0c61b/schedules';
