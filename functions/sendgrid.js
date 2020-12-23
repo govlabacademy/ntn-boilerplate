@@ -58,6 +58,7 @@ client.request(request)
 .then(([response, body]) => {
   console.log(response.statusCode);
   console.log(body.id);
+
   const request2 = {
     method: 'PUT',
     url: '/marketing/singlesends/'+body.id+'/schedule',
@@ -67,7 +68,7 @@ client.request(request)
   .then(([response2, body2]) => {
     console.log(response2.statusCode);
     console.log(body2.id);
-  }
+  });
 
 })
 
