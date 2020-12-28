@@ -29,6 +29,15 @@ exports.handler = function(event, context, callback) {
   // console.log(callback);
   // console.log(event.body);
 
+const contentdata = {
+	"news":[{"article":"First News Story","image":"https://marketing-image-production.s3.amazonaws.com/uploads/d13f90f1285040cd12f86d57ab9e61fee852def9f17e9d65c7a875b213c0fc414235679aa4016327adad5e78758cd9d131db32da4385e226d43fe01cfcd273eb.png","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"","c2a_button":"Read the Story"
+}
+,{
+	"article":"Second News Story","image":"https://marketing-image-production.s3.amazonaws.com/uploads/d13f90f1285040cd12f86d57ab9e61fee852def9f17e9d65c7a875b213c0fc414235679aa4016327adad5e78758cd9d131db32da4385e226d43fe01cfcd273eb.png","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"","c2a_button":"Read Story"
+}
+,{
+	"article":"Third News Story","image":"https://marketing-image-production.s3.amazonaws.com/uploads/d13f90f1285040cd12f86d57ab9e61fee852def9f17e9d65c7a875b213c0fc414235679aa4016327adad5e78758cd9d131db32da4385e226d43fe01cfcd273eb.png","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"","c2a_button":"Read Story"}]
+};
 
   const {
     SENDGRID_API_KEY,
@@ -49,35 +58,47 @@ exports.handler = function(event, context, callback) {
 
       const client = require('@sendgrid/client');
 client.setApiKey(SENDGRID_API_KEY);
-// const request = {
-//   method: 'POST',
-//   url: '/v3/marketing/singlesends',
-//   body: "{\"name\":\"By Stephan\",\"status\":\"scheduled\",\"send_at\":\"2020-12-23T05:15:44Z\",\"sender_id\":\"1274375\",\"send_to\":{\"list_ids\":[\"beb02da9-d59c-4875-8ea7-1797d3a7eb9e\"]},\"email_config\":{\"generate_plain_content\":true,\"design_id\":\"483b855f-7fa9-4967-a7e1-ca05b0676fc7\"}}"
-// };
-
-// client.request(request)
-// .then(([response, body]) => {
-//   console.log(response.statusCode);
-//   console.log(body.id);
-//
-//
-// })
-
-const data = {
-  "send_at": 1608754500
-};
-
 const request = {
-  method: 'PUT',
-  url: '/v3/marketing/singlesends/ad66e0fe-44dd-11eb-b8de-b634cab0c61b/schedule',
-  body: "{\"send_at\":\"2020-12-23T22:17:18Z\"}"
+  method: 'POST',
+  url: '/v3/marketing/singlesends',
+  body: "{\"name\":\"By Stephan\",\"status\":\"scheduled\",\"send_at\":\"2020-12-28T19:48:18Z\",\"sender_id\":\"1274375\",\"send_to\":{\"list_ids\":[\"beb02da9-d59c-4875-8ea7-1797d3a7eb9e\"]},\"email_config\":{\"generate_plain_content\":true,\"design_id\":\"30a18e13-1454-4db5-8217-9676ddd875b4\"}}"
 };
 
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
+client.request(request)
+.then(([response, body]) => {
+  console.log(response.statusCode);
+  console.log(body.id);
+
+  const request2 = {
+    method: 'PATCH',
+    url: '/v3/marketing/singlesends/30a18e13-1454-4db5-8217-9676ddd875b4/schedule',
+    body: "{\"send_at\":\"2020-12-28T19:48:18Z\"}"
+  };
+
+    client.request(request2)
+    .then(([response2, body2]) => {
+      console.log(response2.statusCode);
+      console.log(response2.body);
+    })
+
+
+})
+
+
+
+
+
+// const request = {
+//   method: 'PUT',
+//   url: '/v3/marketing/singlesends/483b855f-7fa9-4967-a7e1-ca05b0676fc7/schedule',
+//   body: "{\"send_at\":\"2020-12-23T22:17:18Z\"}"
+// };
+//
+//   client.request(request)
+//   .then(([response, body]) => {
+//     console.log(response.statusCode);
+//     console.log(response.body);
+//   })
 
 
     //      directus.auth.login({ email: DIRECTUS_LOGIN, password: DIRECTUS_PWD }).then( authresp => {
