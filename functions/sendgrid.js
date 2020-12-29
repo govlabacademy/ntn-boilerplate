@@ -58,10 +58,16 @@ const contentdata = {
 
       const client = require('@sendgrid/client');
 client.setApiKey(SENDGRID_API_KEY);
+// const request = {
+//   method: 'POST',
+//   url: '/v3/marketing/singlesends',
+//   body: "{\"name\":\"By Stephan\",\"status\":\"scheduled\",\"send_at\":\"2020-12-28T19:48:18Z\",\"sender_id\":\"1274375\",\"send_to\":{\"list_ids\":[\"beb02da9-d59c-4875-8ea7-1797d3a7eb9e\"]},\"email_config\":{\"generate_plain_content\":true,\"design_id\":\"30a18e13-1454-4db5-8217-9676ddd875b4\"}}"
+// };
+
 const request = {
-  method: 'POST',
-  url: '/v3/marketing/singlesends',
-  body: "{\"name\":\"By Stephan\",\"status\":\"scheduled\",\"send_at\":\"2020-12-28T19:58:18Z\",\"sender_id\":\"1274375\",\"send_to\":{\"list_ids\":[\"beb02da9-d59c-4875-8ea7-1797d3a7eb9e\"]},\"email_config\":{\"generate_plain_content\":true,\"template_id\":\"30a18e13-1454-4db5-8217-9676ddd875b4\"}}"
+  method: 'GET',
+  url: '/v3/marketing/lists/2b6695e1-878f-491c-96e5-8c5d655964d9?contact_sample=true'
+  // body: "{\"name\":\"By Stephan\",\"status\":\"scheduled\",\"send_at\":\"2020-12-28T19:48:18Z\",\"sender_id\":\"1274375\",\"send_to\":{\"list_ids\":[\"beb02da9-d59c-4875-8ea7-1797d3a7eb9e\"]},\"email_config\":{\"generate_plain_content\":true,\"design_id\":\"30a18e13-1454-4db5-8217-9676ddd875b4\"}}"
 };
 
 client.request(request)
@@ -72,7 +78,7 @@ client.request(request)
   const request2 = {
     method: 'PATCH',
     url: '/v3/marketing/singlesends/30a18e13-1454-4db5-8217-9676ddd875b4/schedule',
-    body: "{\"send_at\":\"2020-12-28T19:58:18Z\"}"
+    body: "{\"send_at\":\"2020-12-28T19:48:18Z\"}"
   };
 
     client.request(request2)
