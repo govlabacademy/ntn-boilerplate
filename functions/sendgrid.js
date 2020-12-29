@@ -73,7 +73,7 @@ const request = {
 client.request(request)
 .then(([response, body]) => {
   console.log(response.statusCode);
-  console.log(body.id);
+  console.log(body);
 
   const request2 = {
     method: 'PATCH',
