@@ -58,7 +58,7 @@ const contentdata =
         console.log(response);
       })
 
-			const sgMail = require('@sendgrid/mail')
+			const sgMail = require('@sendgrid/mail');
       const client = require('@sendgrid/client');
 client.setApiKey(SENDGRID_API_KEY);
 // const request = {
