@@ -69,9 +69,10 @@ client.setApiKey(SENDGRID_API_KEY);
 
 sgMail.setApiKey(SENDGRID_API_KEY);
 const msg = {
-  to: ['schmid91@gmail.org', 'stephan@thegovlab.org'],
+  to: ['schmid91@gmail.com', 'stephan@thegovlab.org'],
   from: 'admins@thegovlab.org',
   subject: 'Hello world',
+	sendAt: 1609340115,
   // text: 'Hello plain world!',
   // html: '<p>Hello HTML world!</p>',
 	dynamic_template_data: contentdata,
