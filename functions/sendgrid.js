@@ -69,7 +69,7 @@ client.setApiKey(SENDGRID_API_KEY);
 
 const requestcount = {
   method: 'GET',
-  url: '/v3/contactdb/recipients'
+  url: '/v3/contactdb/status'
   // body: "{\"name\":\"By Stephan\",\"status\":\"scheduled\",\"send_at\":\"2020-12-28T19:48:18Z\",\"sender_id\":\"1274375\",\"send_to\":{\"list_ids\":[\"beb02da9-d59c-4875-8ea7-1797d3a7eb9e\"]},\"email_config\":{\"generate_plain_content\":true,\"design_id\":\"30a18e13-1454-4db5-8217-9676ddd875b4\"}}"
 };
 client.request(requestcount)
