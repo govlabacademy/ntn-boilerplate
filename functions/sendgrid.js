@@ -32,7 +32,7 @@ exports.handler = function(event, context, callback) {
   // console.log(event.body);
 
 const contentdata =
-	{	"news":[{"article":"First News Story","image":"https://marketing-image-production.s3.amazonaws.com/uploads/d13f90f1285040cd12f86d57ab9e61fee852def9f17e9d65c7a875b213c0fc414235679aa4016327adad5e78758cd9d131db32da4385e226d43fe01cfcd273eb.png","text":"Tadaa Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"","c2a_button":"Read the Story"
+	{	"news":[{"article":"First News Story","image":"https://marketing-image-production.s3.amazonaws.com/uploads/d13f90f1285040cd12f86d57ab9e61fee852def9f17e9d65c7a875b213c0fc414235679aa4016327adad5e78758cd9d131db32da4385e226d43fe01cfcd273eb.png","text":"Tadaima Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"","c2a_button":"Read the Story"
 	}
 	,{
 		"article":"Second News Story","image":"https://marketing-image-production.s3.amazonaws.com/uploads/d13f90f1285040cd12f86d57ab9e61fee852def9f17e9d65c7a875b213c0fc414235679aa4016327adad5e78758cd9d131db32da4385e226d43fe01cfcd273eb.png","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"","c2a_button":"Read Story"
@@ -68,14 +68,14 @@ client.setApiKey(SENDGRID_API_KEY);
 // };
 
 const requestcount = {
-  method: 'GET',
-  url: '/v3/contactdb/status'
-  // body: "{\"name\":\"By Stephan\",\"status\":\"scheduled\",\"send_at\":\"2020-12-28T19:48:18Z\",\"sender_id\":\"1274375\",\"send_to\":{\"list_ids\":[\"beb02da9-d59c-4875-8ea7-1797d3a7eb9e\"]},\"email_config\":{\"generate_plain_content\":true,\"design_id\":\"30a18e13-1454-4db5-8217-9676ddd875b4\"}}"
+  method: 'PATCH',
+  url: '/v3/designs/483b855f-7fa9-4967-a7e1-ca05b0676fc7',
+  body: "{\"name\":\"By Stephan\",\"subject\":\"Happy New Year\"}"
 };
 client.request(requestcount)
 .then(([response, body]) => {
   console.log(response.statusCode);
-   console.log(response.body);
+   console.log(response);
 
 })
 //
