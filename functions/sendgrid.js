@@ -70,7 +70,7 @@ client.setApiKey(SENDGRID_API_KEY);
 const requestcount = {
   method: 'PATCH',
   url: '/v3/designs/483b855f-7fa9-4967-a7e1-ca05b0676fc7',
-  body: {"name":"By Stephan","subject":"Happy New 2021"}
+  body: {"name":"By Stephan","subject":"Happy New Year 2021", "test_data":'{"news":[{"article":"First Newsy Story","image":"https://marketing-image-production.s3.amazonaws.com/uploads/d13f90f1285040cd12f86d57ab9e61fee852def9f17e9d65c7a875b213c0fc414235679aa4016327adad5e78758cd9d131db32da4385e226d43fe01cfcd273eb.png","text":"Tadaaima Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In pu mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"","c2a_button":"Read the Story"}'}
 };
 
 
