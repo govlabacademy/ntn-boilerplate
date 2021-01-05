@@ -85,13 +85,13 @@ client.request(requestdesign)
   console.log(response.statusCode);
    console.log(response);
 
-	 client.request(request)
-	 .then(([response2, body2]) => {
-
-	   console.log(response2.statusCode);
-	 	console.log(response2);
-	   console.log(body2);
- });
+	//  client.request(request)
+	//  .then(([response2, body2]) => {
+ // 
+	//    console.log(response2.statusCode);
+	//  	console.log(response2);
+	//    console.log(body2);
+ // });
 
 
 })
