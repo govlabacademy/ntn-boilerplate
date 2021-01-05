@@ -69,15 +69,15 @@ client.setApiKey(SENDGRID_API_KEY);
 
 const requestdesign = {
   method: 'PATCH',
-  url: '/v3/designs/483b855f-7fa9-4967-a7e1-ca05b0676fc7',
-  body: {"name":"By Stephan","subject":"Happy New Year Updated 2021", "test_data":'{"news":[{"article":"First Newsy Story","image":"https://directus.thegovlab.com/uploads/thegovlab/originals/mcc-student-project-1.jpg","text":"Tadaaima hahah Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In pu mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"","c2a_button":"Read the Story"},{"article":"First Newsy Story","image":"https://directus.thegovlab.com/uploads/thegovlab/originals/crowdlaw.png","text":"Crowdlaw Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In pu mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"https://crowd.law","c2a_button":"Read the Story"}]}'}
+  url: '/v3/marketing/singlesends/f3bd9669-4f6f-11eb-8737-f6cc7c040d8d',
+	body: {"name":"By Stephan","status":"scheduled","send_at":"2021-01-05T15:38:18Z","sender_id":"1274375","send_to":{"list_ids":["299b6572-faee-4e8c-bbc6-81b1bd67737f"]},"email_config":{"test_data":'{"news":[{"article":"First Newsy Story","image":"https://directus.thegovlab.com/uploads/thegovlab/originals/mcc-student-project-1.jpg","text":"Tadaaima hahah Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In pu mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"","c2a_button":"Read the Story"},{"article":"First Newsy Story","image":"https://directus.thegovlab.com/uploads/thegovlab/originals/crowdlaw.png","text":"Crowdlaw Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In pu mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"https://crowd.law","c2a_button":"Read the Story"}]}'}}
 };
 
-const request = {
-	method: 'POST',
-	url: '/v3/marketing/singlesends',
-	body: {"name":"By Stephan","status":"scheduled","send_at":"2021-01-05T15:38:18Z","sender_id":"1274375","send_to":{"list_ids":["299b6572-faee-4e8c-bbc6-81b1bd67737f"]},"email_config":{"design_id":"483b855f-7fa9-4967-a7e1-ca05b0676fc7","dynamic_template_data":'{"news":[{"article":"First Newsy Story","image":"https://directus.thegovlab.com/uploads/thegovlab/originals/mcc-student-project-1.jpg","text":"Tadaaima hahah Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In pu mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"","c2a_button":"Read the Story"},{"article":"First Newsy Story","image":"https://directus.thegovlab.com/uploads/thegovlab/originals/crowdlaw.png","text":"Crowdlaw Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In pu mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"https://crowd.law","c2a_button":"Read the Story"}]}',"generate_plain_content":true}}
-};
+// const request = {
+// 	method: 'POST',
+// 	url: '/v3/marketing/singlesends',
+// 	body: {"name":"By Stephan","status":"scheduled","send_at":"2021-01-05T15:38:18Z","sender_id":"1274375","send_to":{"list_ids":["299b6572-faee-4e8c-bbc6-81b1bd67737f"]},"email_config":{"design_id":"483b855f-7fa9-4967-a7e1-ca05b0676fc7","dynamic_template_data":'{"news":[{"article":"First Newsy Story","image":"https://directus.thegovlab.com/uploads/thegovlab/originals/mcc-student-project-1.jpg","text":"Tadaaima hahah Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In pu mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"","c2a_button":"Read the Story"},{"article":"First Newsy Story","image":"https://directus.thegovlab.com/uploads/thegovlab/originals/crowdlaw.png","text":"Crowdlaw Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt elementum sem non luctus. Ut dolor nisl, facilisis non magna quis, elementum ultricies tortor. In pu mattis, purus ut tincidunt egestas, ligula nulla accumsan justo, vitae bibendum orci ligula id ipsum. Nunc elementum tincidunt libero, in ullamcorper magna volutpat a.","c2a_link":"https://crowd.law","c2a_button":"Read the Story"}]}',"generate_plain_content":true}}
+// };
 
 
 client.request(requestdesign)
@@ -95,6 +95,9 @@ client.request(requestdesign)
 
 
 })
+
+
+
 //
 // const request = {
 //   method: 'GET',
