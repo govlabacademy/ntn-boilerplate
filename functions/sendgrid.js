@@ -76,7 +76,7 @@ const requestdesign = {
 const request = {
 	method: 'POST',
 	url: '/v3/marketing/singlesends',
-	body: "{\"name\":\"By Stephan\",\"status\":\"scheduled\",\"send_at\":\"2021-01-05T15:38:18Z\",\"sender_id\":\"1274375\",\"send_to\":{\"list_ids\":[\"299b6572-faee-4e8c-bbc6-81b1bd67737f\"]},\"email_config\":{\"generate_plain_content\":true,\"design_id\":\"4483b855f-7fa9-4967-a7e1-ca05b0676fc7\"}}"
+	body: "{\"name\":\"By Stephan\",\"status\":\"scheduled\",\"send_at\":\"2021-01-05T15:38:18Z\",\"sender_id\":\"1274375\",\"send_to\":{\"list_ids\":[\"299b6572-faee-4e8c-bbc6-81b1bd67737f\"]},\"email_config\":{\"design_id\":\"483b855f-7fa9-4967-a7e1-ca05b0676fc7\"}}"
 };
 
 
