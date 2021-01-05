@@ -70,8 +70,10 @@ client.setApiKey(SENDGRID_API_KEY);
 const requestcount = {
   method: 'PATCH',
   url: '/v3/designs/483b855f-7fa9-4967-a7e1-ca05b0676fc7',
-  body: "{\"name\":\"By Stephan\",\"subject\":\"Happy 2021\"}"
+  body: {"name":"By Stephan","subject":"Happy New 2021"}
 };
+
+
 client.request(requestcount)
 .then(([response, body]) => {
   console.log(response.statusCode);
